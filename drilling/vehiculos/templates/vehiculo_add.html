@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/vehiculo_add.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h2>Agregar Vehículo</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+{% endblock %}
+
+
+

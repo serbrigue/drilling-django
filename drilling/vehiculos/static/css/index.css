@@ -1,0 +1,19 @@
+.carousel-inner img {
+    width: 800px;
+    height: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+.carousel-control-prev-icon {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}
+
+.carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}

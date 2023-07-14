@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h2>Catálogo de Vehículos</h2>
+<div class="container mt-4">
+    <h1>Listado de Vehículos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Carrocería</th>
+                <th>Serial del Motor</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>categoria</th>
+                <th>Ver más</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehiculo in vehiculos %}
+                <tr>
+                    <td>{{ vehiculo.marca }}</td>
+                    <td>{{ vehiculo.modelo }}</td>
+                    <td>{{ vehiculo.carroceria }}</td>
+                    <td>{{ vehiculo.serial_motor }}</td>
+                    <td>{{ vehiculo.categoria }}</td>
+                    <td>{{vehiculo.precio}}</td>
+                    <td>
+                        {% if vehiculo.precio < 10000 %}
+                            Bajo
+                        {% elif vehiculo.precio >= 10000 and vehiculo.precio < 30000 %}
+                            Medio
+                        {% else %}
+                            Alto
+                        {% endif %}
+                    </td>
+                    <td><a href="{% url 'detalle_vehiculo' vehiculo.id %}"><i class='fas fa-search'></i></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

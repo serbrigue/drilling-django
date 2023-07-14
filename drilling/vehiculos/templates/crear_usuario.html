@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/crear_usuario.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>Crear Usuario</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear</button>
+{% endblock %}

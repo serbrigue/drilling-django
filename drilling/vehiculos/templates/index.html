@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>Catalogo de vehiculos</h1>
+
+<p>Bienvenido al Catálogo de Autos
+
+  En esta página, te presentamos un catálogo de autos que te permitirá explorar una amplia variedad de modelos de vehículos. Nuestra plataforma ha sido desarrollada utilizando Django, un poderoso framework de Python para el desarrollo web. Django nos permite crear una aplicación web robusta y escalable de manera eficiente.
+  
+  Para acceder a nuestra lista de vehículos, simplemente dirígete a la página principal. Allí encontrarás un carrusel interactivo que muestra una selección de los modelos de autos más destacados. Este carrusel es una forma visualmente atractiva de presentar los vehículos y captar tu atención.
+  
+  Al hacer clic en cualquier modelo del carrusel o navegar por la página, podrás acceder a una página individual para cada vehículo, donde encontrarás información detallada, imágenes adicionales y características especiales de cada modelo.
+  
+  Nuestro objetivo es brindarte una experiencia fluida y amigable para que puedas explorar nuestro catálogo de autos de manera sencilla y eficiente. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos. Estamos aquí para brindarte la mejor experiencia de búsqueda de vehículos.
+  
+  Esperamos que disfrutes navegando por nuestro catálogo de autos y encuentres el modelo perfecto para ti. ¡Gracias por visitarnos y comenzar tu búsqueda de vehículos con nosotros!
+  
+  ¡Espero que esta breve introducción sea útil para tu página de catálogo de autos! Si tienes más preguntas o necesitas ayuda adicional, no dudes en preguntar. ¡Estoy aquí para ayudarte!</p>
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicadores -->
+    <ol class="carousel-indicators">
+      {% for image in images %}
+      <li data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+      {% endfor %}
+    </ol>
+  
+    <!-- Slides -->
+    <div class="carousel-inner">
+      {% for item in images %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <a href="{% url 'detalle_vehiculo' item.id %}">
+          <img src="{{ item.url }}" alt="Image {{ forloop.counter }}">
+          <div class="carousel-caption">
+            <h5>{{ item.marca }}</h5>
+            <p>{{ item.modelo }}</p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+  
+    <!-- Controles -->
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </a>
+  </div>
+{% endblock %}
+

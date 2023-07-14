@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/detalles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md-8 detalle-vehiculo">
+    <img src="{{ vehiculo.imagen_url }}" alt="{{ vehiculo.modelo }}" class="img-fluid img-vehiculo">
+    <div class="info">
+      <h1>Detalles</h1>
+      <p>Marca: {{ vehiculo.marca }}</p>
+      <p>Modelo: {{ vehiculo.modelo }}</p>
+      <p>Carrocería: {{ vehiculo.carroceria }}</p>
+      <p>Serial Motor: {{ vehiculo.serial_motor }}</p>
+      <p>Categoría: {{ vehiculo.categoria }}</p>
+      <p>Precio: {{ vehiculo.precio }}</p>
+    </div>
+  </div>
+{% endblock %}
+

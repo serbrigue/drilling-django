@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/inicio_sesion.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="padding-bottom: 300px;">
+    <h1>Iniciar Sesión</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Iniciar Sesión</button>
+</div>
+{% endblock %}
